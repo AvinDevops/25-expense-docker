@@ -3,13 +3,17 @@ networks:
   default:
     name: expense
 volumes:
-  mysql: # docker vol create mysql
+  mysql:
+    external: true # if true, you need to create manually
 services: 
   mysql:
     image: mysql:v1.0.0
     container_name: mysql
     volumes:
-      - mysql:/var/lib/mysql # -v vol-name:path/in/container
+      #- mysql:/var/lib/mysql # -v vol-name:path/in/container
+      - source: mysql
+        target: /var/lib/mysql
+        type: volume
   backend: 
     image: backend:v1.0.0
     container_name: backend
