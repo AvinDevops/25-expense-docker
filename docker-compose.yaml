@@ -1,5 +1,4 @@
 name: expense
-verson: '3.8'
 networks:
   default:
     name: expense
